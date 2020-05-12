@@ -1,0 +1,92 @@
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <div class="card-content white-text">
+                <div class="row">
+                    <div class="col s5">
+                        <form #Student="ngForm" (ngSubmit)="onSubmit(Student)">
+                            <input type="hidden" name="_id" #_id="ngModel"
+                                [(ngModel)]="studentService.selectedStudent._id">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="name" #name="ngModel"
+                                        [(ngModel)]="studentService.selectedStudent.name" placeholder="Enter full name"
+                                        required>
+                                    <label>Name :
+                                        <label class="red-text">*</label>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="age" #name="ngModel"
+                                        [(ngModel)]="studentService.selectedStudent.age" placeholder="Eg : 29">
+                                    <label>Age :</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="gender" #name="ngModel"
+                                        [(ngModel)]="studentService.selectedStudent.gender" placeholder="Enter gender">
+                                    <label>Gender :</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="major" #name="ngModel"
+                                        [(ngModel)]="studentService.selectedStudent.major" placeholder="Enter major">
+                                    <label>Major :</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="campus" #name="ngModel"
+                                        [(ngModel)]="studentService.selectedStudent.campus" placeholder="Enter campus">
+                                    <label>Campus :</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <button class="btn btn-custom right" type="button"
+                                        (click)="resetForm(Student)">Reset</button>
+                                    <button class="btn btn-custom right" type="submit"
+                                        [disabled]="!Student.valid">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col s7">
+                        <table class="responsive-table highlight">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Age</th>
+                                    <th>Gender</th>
+                                    <th>Major</th>
+                                    <th>Campus</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tr *ngFor="let stud of studentService.students">
+                                <td>{{stud.name}}</td>
+                                <td>{{stud.age}}</td>
+                                <td>{{stud.gender}}</td>
+                                <td>{{stud.major}}</td>
+                                <td>{{stud.campus}}</td>
+                                <td>
+                                    <a class="action-btn" (click)="onEdit(stud)">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+                                    <a class="action-btn" (click)="onDelete(stud._id,Student)">
+                                        <i class="material-icons">delete</i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
